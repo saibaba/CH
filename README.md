@@ -56,3 +56,5 @@ References
 * https://en.wikibooks.org/wiki/Haskell/The_Curry%E2%80%93Howard_isomorphism
 * http://www.haskellforall.com/2017/02/the-curry-howard-correspondence-between.html
 * https://stackoverflow.com/questions/10753073/whats-the-theoretical-basis-for-existential-types/10753957#10753957
+* https://stackoverflow.com/questions/28545545/
+* https://gist.github.com/CMCDragonkai/b203769c588caddf8cb051529339635c
