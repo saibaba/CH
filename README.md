@@ -36,8 +36,10 @@ data T a = Con a | Nil
 
 CH in reverse
 =============
-const :: forall a b. a -> b -> a
+
+```const :: forall a b. a -> b -> a
 const x y = x
+```
 
 Since a-> b-> a is inhabitated by cost, a -> b -> a must be a theorem!
 
