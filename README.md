@@ -37,7 +37,8 @@ data T a = Con a | Nil
 CH in reverse
 =============
 
-```const :: forall a b. a -> b -> a
+```
+const :: forall a b. a -> b -> a
 const x y = x
 ```
 
