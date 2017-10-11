@@ -10,7 +10,9 @@
 {- In this file, Prop means all propositions, true or false -}
 
 -- see https://en.wikibooks.org/wiki/Haskell/The_Curry%E2%80%93Howard_isomorphism#Falsity
-data Void
+data Void -- no constructor, hence you cannot create any value, so uninhabited type
+-- a better naming for Void would be 
+data False  -- False, the uninhabited type
 
 -- To prove ∀(a ∈ Prop): a ⇒ a
 ---- Translate into type: forall a. a -> a
@@ -150,11 +152,25 @@ test10 = do
   putStrLn "Test - 10 proposition ∀(a ∈ Prop): ∀(b ∈ Prop): a ⇒ b ⇒ a"
   print $ myconst 20 "string"
 
-------- Now complicated stuff
-------- Law of excluded middles (every proposition must be true or false)
-------- Or ∀(a ∈ Prop): a ∨ not(a)
-exclmdl :: forall a . Either a (a -> Void)
-exclmdl = let x = x in x  
+-- Not 
+---- If a is a theorem (inhabitated type) then Not(a) is not a theorem (uninhabitated type). So,
+---- type Not a = forall a. a -> False
+---- would work as you cannot create an instance of a function that returns False (since you cannot create an instance of False type, function implementation do not have a way of returning a value of False type
+---- Like wise, if a is not a theorem (uninhabitated type), then Not(a) is a theorem (inhabitated type).
+---- The function id:: False->False would fit the bill!
+
+type Not a = a -> False
+
+
+
+-- Now complicated stuff
+
+-- Law of excluded middles (every proposition must be true or false)
+---- Or ∀(a ∈ Prop): a ∨ not(a)
+---- exclmdl :: forall a . Either a (a -> False) Or more readable one:
+exclmdl :: forall a . Either a (Not a)
+---- It is not possible to create an instance of exclmdl, so, we use a bottom and assume it exists
+exclmdl = exclmdl
 
 -- To prove (∀(b ∈ Prop): b ∨ not(b)) ⇒ (∀(a ∈ Prop): not(not(a)) ⇒ a)
 ---- Above is "if we assume that all propositions are either true or false, then if a proposition is not false it must be true"

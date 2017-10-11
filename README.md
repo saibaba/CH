@@ -14,6 +14,19 @@ CH is limited to "intuitionistic logic" which is just like the "regular" logic y
 * Not an axiom: P ⇔ ¬¬P (but P ⇒ ¬¬P is fine)
 * Not an axiom: P ∨ ¬P
 
+An introductory setting:
+
+Consider  (P ∧ (P ⇒ Q)) ⇒ Q :
+
+Proposition P is true => type P is inhabitated (has proof)
+P ⇒ Q correspond to a function, f :: p -> q. So,
+f(a::p) = b::q i.e., f is able to produce a value of type q.
+So  q is inhabitated type. Hence, proposition q is true.
+
+Proof itself corresponds to f(a) i.e., the function application.
+
+
+
 Note 1
 ======
 
@@ -48,6 +61,8 @@ Problem with ⊥
 ==============
 This makes every type inhabitated (by ⊥) i.e., everything is a theorem - an inconsistent logic ! Hence we have to work with a subset of haskell.
 
+But we can use it for other purposes:
+not(p) => p is not inhabitated => equivalently no function body of type p->⊥.
 
 References
 ==========
@@ -58,3 +73,4 @@ References
 * https://stackoverflow.com/questions/10753073/whats-the-theoretical-basis-for-existential-types/10753957#10753957
 * https://stackoverflow.com/questions/28545545/
 * https://gist.github.com/CMCDragonkai/b203769c588caddf8cb051529339635c
+* http://jelv.is/talks/curry-howard.html
